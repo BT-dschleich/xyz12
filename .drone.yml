@@ -7,6 +7,11 @@ steps:
   commands:
   - sleep 20
   - psql -U postgres -d test -h database
+- name: test
+  image: python:3.6
+  commands:
+  - pip install -r requirements.txt
+  - python odoo-bin --quit-after-init -d test -i base --stop-after-init --workers=0 --max-cron-threads=0 --log-handler=:DEBUG --logfile= --log-level=debug --no-xmlrpc --addons-path=addons
 
 services:
 - name: database
