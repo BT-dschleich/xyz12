@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: test
+- name: dbprep
   image: postgres:10-alpine
   commands:
   - sleep 20
