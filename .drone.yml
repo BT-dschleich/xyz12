@@ -1,0 +1,18 @@
+kind: pipeline
+name: default
+
+steps:
+- name: test
+  image: postgres:10-alpine
+  commands:
+  - sleep 20
+  - psql -U postgres -d test -h database
+
+services:
+- name: database
+  image: postgres:10-alpine
+  ports:
+  - 5432
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_DB: test
